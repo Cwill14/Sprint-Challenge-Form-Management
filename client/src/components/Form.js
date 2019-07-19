@@ -8,16 +8,18 @@ const SignupForm = () => {
         <Form>
             <Field type="username" name="username" placeholder="username" />
             <Field type="password" name="password" placeholder="password" />
+            {/* <Field type="password" name="cpassword" placeholder="confirm password" /> */}
             <button type="submit">Submit</button>
         </Form>
     );
 };
 
 export default withFormik({
-    mapPropsToValues(username, password) {
+    mapPropsToValues(username, password, cpassword) {
         return {
             username: username || "",
-            password: password || ""
+            password: password || "",
+            cpassword: cpassword || "",
         }
     },
     validationSchema: Yup.object().shape({
@@ -25,6 +27,7 @@ export default withFormik({
         password: Yup.string().min(6).required()
     }),
     handleSubmit(values, formikBag) {
+        // password !== cpassword && return "passwords must match";
         axiosWithAuth()
             .post('http://localhost:5000/api/register', values)
             .then(res => {
