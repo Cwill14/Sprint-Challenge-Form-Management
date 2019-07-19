@@ -13,7 +13,6 @@ const SignupForm = () => {
     );
 };
 
-// export default SignupForm;
 export default withFormik({
     mapPropsToValues(username, password) {
         return {
@@ -29,7 +28,6 @@ export default withFormik({
         axiosWithAuth()
             .post('http://localhost:5000/api/register', values)
             .then(res => {
-                console.log(res)
                 localStorage.setItem('token', res.data.token)
                 formikBag.props.history.push('/data')
             })

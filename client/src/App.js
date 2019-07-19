@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import SignupForm from './components/Form';
 import Data from './components/Data';
-import { axiosWithAuth } from './axiosAuth';
 import { Route } from 'react-router-dom';
 
 function App() {
